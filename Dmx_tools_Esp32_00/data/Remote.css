@@ -1,9 +1,9 @@
 
 body {
   width:100%;
-  // max-width:500px;
+   /* max-width:500px; */
   height:100%;
-//   max-height:800px;
+  /* max-height:800px; */
   background-color: #101010;
   font-family: Arial, Helvetica, Sans-Serif;
   Color: #AAAAAA;
@@ -12,180 +12,24 @@ body {
 .content {
   max-width: 500px;
   margin: auto;
-/*  border: 1px solid green;*/
+ /* border: 1px solid green; */
 }
 
 form {
   text-align: center;
 }
 
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 18px 0;
-  width: 100%;
-}
-input[type=range]:focus {
-  outline: none;
-}
-
-
-/*SLIDER STYLE CHROME*/
-input[type=range]::-webkit-slider-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 36px;
-  border-radius: 3px;
-  background: #ffffff;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -14px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #dddddd;
- // background: #367ebd;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #808080;
-  //background: #3071a9;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
-}
-
-/*SLIDER STYLE FIREFOX*/
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #3071a9;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
-}
-input[type=range]::-moz-range-thumb{
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -14px;
-}
-
-/*STYLE SLIDER INTERNET EXPLORER*/
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: #2a6495;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type=range]::-ms-fill-upper {
-  background: #3071a9;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type=range]::-ms-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
-  cursor: pointer;
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: #3071a9;
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #367ebd;
-}
-
-/*ALL FADER GROUP*/
-.slider-group {
-  margin: auto;
-}
-
-/*ONE FADER GROUP*/
-.slider-box {
-/*  border: 1px solid white;*/
-  display: inline-block;
-}
-
-  /*FADER*/
-  .slider-wrapper {
-  display: block;
-  width: 25px;
-  height: 200px;
-  padding: 0px 3px;
-  margin: 5px;
-  transform-origin: 0px 0px;
-}
-.slider-wrapper input {
-  width: 200px;
-  height: 25px;
-  margin: 0px;
-  transform-origin: 100px 100px;
-  transform: rotate(-90deg);
-}
-
-  /*NUMBER*/
-  .num-wrapper {
-    display:block;
-    margin:3px;
-    padding: 3px;
-    font-weight:bold;
-    text-decoration:none;
-    transform-origin: 0px 0px;
-
-}
-.num-wrapper input {
-  width: 36px;
-  height: 25px;
-  margin: 0px;
-  transform-origin: 18px 18px;
-  transform: rotate(-90deg);
-}
-
 /*ECRAN*/
-.ecran {
-  border:2px solid #BBBBBB;
-  width: 10%;
-  margin:0px;
-  padding: 0px 100px;
-  font-weight:bold;
-}
 .ecran input {
-width: auto%;
+display:block;
+margin: auto;
 width: 300px;
-height: 25px;
-margin: 0px;
+height: 50px;
+background-color: #000000;
+color: white;
+font-size: 25px;
+/* border: 1px solid blue; */
 }
-
-/*FADER NAME*/
-.slider-title {
-  display:block;
-  padding: 0px 3px;
-}
-
 
 h1 {
     margin: auto;
@@ -210,12 +54,6 @@ h1 {
   position: fixed;
 }
 
-#colorbar {
-    display:inline-block;
-/*   width: 100%;
-   height: 100px;*/
-  }
-
   ul#controls {
     display:inline-block;
     width: auto%;
@@ -232,10 +70,11 @@ h1 {
     width:10%;
   }
 
-  ul#brightness li, ul#speed li {
-  display:inline-block;
-    width:15%;
+  ul#mode li#enter  {
+    display:inline-block;
+    width:21%;
   }
+
 
   ul li a {
     display:block;
