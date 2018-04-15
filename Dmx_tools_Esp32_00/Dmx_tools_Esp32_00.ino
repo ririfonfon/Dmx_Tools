@@ -1,15 +1,17 @@
 #define DEBUGeeprom 1
 #define DEBUG 1
+#define DEBUG_ARTNET 1
 #define USE_DHCP 1
 
 // lib wifi ethernet
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <WiFiUdp.h>
-#include <SPI.h>         // needed for Arduino versions later than 0018
-#include <Ethernet2.h>
-#include <EthernetUdp2.h>         // UDP library from: bjoern@cs.stanford.edu 12/30/2008
+#include <ArtnetWifi.h>//https://github.com/rstephan/ArtnetWifi
+//#include <SPI.h>         // needed for Arduino versions later than 0018
+//#include <Ethernet2.h>
+//#include <EthernetUdp2.h>         // UDP library from: bjoern@cs.stanford.edu 12/30/2008
 byte mac[]    = {  0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02 };
-EthernetUDP Udp;
+//EthernetUDP Udp;
 unsigned int udpPort_node = 6454;  // local port to listen on
 unsigned int udpPort_server = 6454;  // local port to speak to
 const int MTUu = 1472;  // Usable MTU (1500 - 20 IP - 8 UDP)
@@ -23,23 +25,23 @@ byte incomingPacket[MTUu];  // buffer for incoming packets
 #include <EEPROM.h>
 // start reading from the first byte (address 0) of the EEPROM
 
-// dmx shield
-#include <LXESP8266UARTDMX.h>
-//#include "ESPDMX.h"
-//DMXESPSerial dmx;
+//// dmx shield
+//#include <LXESP8266UARTDMX.h>
+////#include "ESPDMX.h"
+////DMXESPSerial dmx;
 
 #define BIT_N(v,n)((v&1<<n)>>n)
 
-// lib  NeoNextion-2.2.0
-#include <Nextion.h>
-#include <NextionPage.h>
-#include <NextionProgressBar.h>
-#include <NextionText.h>
-#include <NextionButton.h>
-// def serial nextion
-#include <SoftwareSerial.h>
-SoftwareSerial NEXTION_PORT(5, 4); // RX, TX d1 d2
-Nextion nex(NEXTION_PORT);
+//// lib  NeoNextion-2.2.0
+//#include <Nextion.h>
+//#include <NextionPage.h>
+//#include <NextionProgressBar.h>
+//#include <NextionText.h>
+//#include <NextionButton.h>
+//// def serial nextion
+//#include <SoftwareSerial.h>
+//SoftwareSerial NEXTION_PORT(5, 4); // RX, TX d1 d2
+//Nextion nex(NEXTION_PORT);
 
 // varialble
 
@@ -83,6 +85,7 @@ uint8_t wif = 0;
 uint8_t ethernet = 0;
 uint8_t etherne = 0;
 uint16_t dela = 1000;
+uint8_t numberofChannels=512;
 
 //ARTNET
 
@@ -158,11 +161,21 @@ uint8_t wifi_aps_found = 0;
 //byte mac[] = {144,162,218,00,16,96};
 //byte ip[] = {2,0,0,111};
 
-WiFiUDP eUDP;
-EthernetUDP UDP;
-int artNetUniA_LastReceived = 0;
-int artNetUniB_LastReceived = 0;
-int artNet_LastReceived_Net = 0;
-int artNet_LastReceived_SubNet = 0;
-int artNet_LastReceived_Uni = 0;
-int artNet_LastReceived_Time = 0;
+///////////////////////////////////// Artnet settings /////////////////////////////////////
+ArtnetWifi artnet;
+const int startUniverse = 0; // CHANGE FOR YOUR SETUP most software this is 1, some software send out artnet first universe as 0.
+
+// Check if we got all universes
+const int maxUniverses = numberOfChannels / 512 + ((numberOfChannels % 512) ? 1 : 0);
+bool universesReceived[maxUniverses];
+bool sendFrame = 1;
+int previousDataLength = 0;
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//EthernetUDP UDP;
+//int artNetUniA_LastReceived = 0;
+//int artNetUniB_LastReceived = 0;
+//int artNet_LastReceived_Net = 0;
+//int artNet_LastReceived_SubNet = 0;
+//int artNet_LastReceived_Uni = 0;
+//int artNet_LastReceived_Time = 0;
